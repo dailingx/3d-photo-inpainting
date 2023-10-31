@@ -27,6 +27,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--config', type=str, default='/root/3d-photo-inpainting/argument.yml',help='Configure of post processing')
 args = parser.parse_args()
 config = yaml.safe_load(open(args.config, 'r'))
+os.environ['DISPLAY']= ':0'
 if config['offscreen_rendering'] is True:
     vispy.use(app='egl')
 os.makedirs(config['mesh_folder'], exist_ok=True)
