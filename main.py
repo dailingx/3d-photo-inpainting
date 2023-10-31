@@ -24,7 +24,7 @@ import MiDaS.MiDaS_utils as MiDaS_utils
 from bilateral_filtering import sparse_bilateral_filtering
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--config', type=str, default='argument.yml',help='Configure of post processing')
+parser.add_argument('--config', type=str, default='/root/3d-photo-inpainting/argument.yml',help='Configure of post processing')
 args = parser.parse_args()
 config = yaml.safe_load(open(args.config, 'r'))
 if config['offscreen_rendering'] is True:
