@@ -29,7 +29,7 @@ args = parser.parse_args()
 config = yaml.safe_load(open(args.config, 'r'))
 # os.environ['DISPLAY']= ':0'
 if config['offscreen_rendering'] is True:
-    print(vispy.sys_info())
+    # print(vispy.sys_info())
     vispy.use(app='egl')
 os.makedirs(config['mesh_folder'], exist_ok=True)
 os.makedirs(config['video_folder'], exist_ok=True)
