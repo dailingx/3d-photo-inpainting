@@ -837,6 +837,7 @@ def clean_far_edge(mask_edge, mask_edge_with_id, context_edge, mask, info_on_pix
 
 def get_MiDaS_samples(image_folder, depth_folder, config, specific=None, aft_certain=None):
     lines = [os.path.splitext(os.path.basename(xx))[0] for xx in glob.glob(os.path.join(image_folder, '*' + config['img_format']))]
+    print(f"test lines size {len(lines)}")
     samples = []
     generic_pose = np.eye(4)
     assert len(config['traj_types']) == len(config['x_shift_range']) ==\
@@ -872,6 +873,7 @@ def get_MiDaS_samples(image_folder, depth_folder, config, specific=None, aft_cer
         sdict['depth_fi'] = os.path.join(depth_folder, seq_dir + config['depth_format'])
         sdict['ref_img_fi'] = os.path.join(image_folder, seq_dir + config['img_format'])
         H, W = imageio.imread(sdict['ref_img_fi']).shape[:2]
+        print(f"test H {H} W {W}")
         sdict['int_mtx'] = np.array([[max(H, W), 0, W//2], [0, max(H, W), H//2], [0, 0, 1]]).astype(np.float32)
         if sdict['int_mtx'].max() > 1:
             sdict['int_mtx'][0, :] = sdict['int_mtx'][0, :] / float(W)
