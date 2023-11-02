@@ -44,7 +44,6 @@ else:
 
 print(f"running on device {device}")
 
-print(f"sample_list size {len(sample_list)}")
 for idx in tqdm(range(len(sample_list))):
     depth = None
     sample = sample_list[idx]
