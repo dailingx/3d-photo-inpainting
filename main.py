@@ -50,7 +50,6 @@ for idx in tqdm(range(len(sample_list))):
     print("Current Source ==> ", sample['src_pair_name'])
     mesh_fi = os.path.join(config['mesh_folder'], sample['src_pair_name'] +'.ply')
     image = imageio.imread(sample['ref_img_fi'])
-    print(f'image.mode={image.mode}')
 
     print(f"Running depth extraction at {time.time()}")
     if config['use_boostmonodepth'] is True:

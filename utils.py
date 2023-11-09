@@ -871,7 +871,8 @@ def get_MiDaS_samples(image_folder, depth_folder, config, specific=None, aft_cer
         sdict = samples[-1]            
         sdict['depth_fi'] = os.path.join(depth_folder, seq_dir + config['depth_format'])
         sdict['ref_img_fi'] = os.path.join(image_folder, seq_dir + config['img_format'])
-        H, W = imageio.imread(sdict['ref_img_fi']).shape[:2]
+        H, W, M = imageio.imread(sdict['ref_img_fi']).shape
+        print(f'image shape: h={H}, w={W}, m={M}')
         sdict['int_mtx'] = np.array([[max(H, W), 0, W//2], [0, max(H, W), H//2], [0, 0, 1]]).astype(np.float32)
         if sdict['int_mtx'].max() > 1:
             sdict['int_mtx'][0, :] = sdict['int_mtx'][0, :] / float(W)
