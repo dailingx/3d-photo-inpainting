@@ -28,7 +28,6 @@ def sparse_bilateral_filtering(
         save_images.append(vis_image)
         save_depths.append(vis_depth)
         u_over, b_over, l_over, r_over = vis_depth_discontinuity(vis_depth, config, mask=mask)
-        print(f'{vis_image}, {u_over}')
         vis_image[u_over > 0] = np.array([0, 0, 0])
         vis_image[b_over > 0] = np.array([0, 0, 0])
         vis_image[l_over > 0] = np.array([0, 0, 0])
